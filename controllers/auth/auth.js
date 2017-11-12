@@ -88,20 +88,18 @@ class AuthController {
     }
 
     verifyToken(req, res, next) {
-        const { authorization } = req.headers;
+        const authorizationTokenHeadr = req.header('Authorization');
 
-        if (authorization) {
-            const token = authorization.split(' ')[1];
+        if (!authorizationTokenHeadr) return next();
 
-            jwt.verify(token, process.env.SECRET_KEY, (err, decodedToken) => {
-                if (err) return res.status(401).json({ err: 'unauthorized' });
+        const token = authorizationTokenHeadr.replace(/^Bearer\s/i, '');
 
-                req.isAuthenticated = true;
-                return next();
-            });
-        } else {
-            next();
-        }
+        jwt.verify(token, process.env.SECRET_KEY, (err, decodedToken) => {
+            if (err) return res.status(401).json({ err: 'unauthorized' });
+
+            req.isAuthenticated = true;
+            return next();
+        });
     }
 
     requireAuth(req, res, next) {
