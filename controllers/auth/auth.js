@@ -68,13 +68,11 @@ class AuthController {
     }
 
     generateJwtToken(data) {
-        const token = jwt.sign({
+        return jwt.sign({
             id: data._id,
             email: data.email,
             issuer: 'spa_auth'
         }, process.env.SECRET_KEY);
-
-        return token;
     }
 
     // we can create this `comparePassword` inside user model methods,

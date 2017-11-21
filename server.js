@@ -1,3 +1,4 @@
+'use strict';
 const http = require('http');
 const dotEnv = require('dotenv').config();
 const mongoose = require('mongoose');
