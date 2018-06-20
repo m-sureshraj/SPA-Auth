@@ -1,2 +1,2 @@
-##SPA-Auth
-Implement basic authentication & social network authentication without using any authentication libraries
+## SPA-Auth
+Implement basic & social network authentication without using any authentication libraries
