@@ -1,3 +1,6 @@
 node_modules
-.env
+.idea
+.vscode
+server/.env
 .DS_Store
+npm-debug.log
